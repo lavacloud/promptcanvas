@@ -1,0 +1,11 @@
+-- Run this once in your Supabase project's SQL Editor
+
+create table if not exists chats (
+  id text not null,
+  pin text not null,
+  data jsonb not null default '{}',
+  updated_at timestamptz not null default now(),
+  primary key (id, pin)
+);
+
+create index if not exists chats_pin_idx on chats(pin);
